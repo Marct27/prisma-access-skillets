@@ -4,10 +4,7 @@ resource "azurerm_virtual_machine" "panorama" {
 	name								  = "${var.virtualMachineName}"
 	location						  = "${azurerm_resource_group.resourcegroup.location}"
 	resource_group_name   = "${azurerm_resource_group.resourcegroup.name}"
-	network_interface_ids =
-	[
-		"${azurerm_network_interface.panorama.id}",
-	]
+	network_interface_ids =["${azurerm_network_interface.panorama.id}",]
 
 	primary_network_interface_id  = "${azurerm_network_interface.panorama.id}"
 	vm_size								        = "${var.virtualMachineSize}"
