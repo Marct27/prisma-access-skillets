@@ -1,10 +1,10 @@
 variable "virtualMachineRG" {
   description = "Virtual Machine RG"
-  default     = "pglynn-test"
+  default     = "marthompson-lab-uk_south"
 }
 variable "Location" {
   description = "Location"
-  default     = "centralus"
+  default     = "uksouth"
 }
 variable "virtualNetworkName" {
   description = "Virtual Network Name"
@@ -52,11 +52,11 @@ variable "virtualMachineName" {
 }
 variable "virtualMachineSize" {
   description = "Virtual Machine Size"
-  default     = "Standard_D3"
+  default     = "Standard_D4s_v3"
 }
 variable "panoramaVersion" {
   description = "Panorama Version"
-  default     = "8.1.2"
+  default     = "10.1.3"
 }
 variable "adminUsername" {
   description = "Admin Username"

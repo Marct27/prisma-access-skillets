@@ -1,13 +1,12 @@
 #### CREATE Panorama
 
 resource "azurerm_virtual_machine" "panorama" {
-	name								  = "${var.virtualMachineName}"
-	location						  = "${azurerm_resource_group.resourcegroup.location}"
-	resource_group_name   = "${azurerm_resource_group.resourcegroup.name}"
-	network_interface_ids =["${azurerm_network_interface.panorama.id}",]
-
-	primary_network_interface_id  = "${azurerm_network_interface.panorama.id}"
-	vm_size								        = "${var.virtualMachineSize}"
+	name							= "${var.virtualMachineName}"
+	location						= "${azurerm_resource_group.resourcegroup.location}"
+	resource_group_name   			= "${azurerm_resource_group.resourcegroup.name}"
+	network_interface_ids 			=["${azurerm_network_interface.panorama.id}",]
+	primary_network_interface_id	= "${azurerm_network_interface.panorama.id}"
+	vm_size							= "${var.virtualMachineSize}"
 
   plan {
     name      = "byol"
@@ -16,17 +15,17 @@ resource "azurerm_virtual_machine" "panorama" {
   }
 
 	storage_image_reference	{
-		publisher 	= "paloaltonetworks"
+		publisher 		= "paloaltonetworks"
 		offer		    = "panorama"
 		sku			    = "byol"
-		version		  = "${var.panoramaVersion}"
+		version		  	= "${var.panoramaVersion}"
 	}
 
 	storage_os_disk {
-	  name							= "${var.virtualMachineName}"
-		caching           = "ReadWrite"
-		create_option     = "FromImage"
-    managed_disk_type = "StandardSSD_LRS"
+		name				= "${var.virtualMachineName}"
+		caching				= "ReadWrite"
+		create_option		= "FromImage"
+    	managed_disk_type	= "StandardSSD_LRS"
 	}
 
 	delete_os_disk_on_termination    = true
