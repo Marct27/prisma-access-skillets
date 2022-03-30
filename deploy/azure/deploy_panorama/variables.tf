@@ -1,6 +1,6 @@
 variable "virtualMachineRG" {
   description = "Virtual Machine RG"
-  default     = "marthompson-lab-uk_south"
+  default     = "mthompson-lab-uk_south"
 }
 variable "Location" {
   description = "Location"
@@ -8,7 +8,7 @@ variable "Location" {
 }
 variable "virtualNetworkName" {
   description = "Virtual Network Name"
-  default     = "panorama"
+  default     = "panorama_vnet"
 }
 variable "addressPrefix" {
   description = "Address Prefix"
@@ -16,27 +16,27 @@ variable "addressPrefix" {
 }
 variable "subnetName" {
   description = "Subnet Name"
-  default     = "panorama"
+  default     = "panorama_subnet"
 }
 variable "subnet" {
   description = "Subnet"
-  default     = "10.0.0.0/24"
+  default     = ["10.0.0.0/24"]
 }
 variable "publicIpAddressName" {
   description = "Public Ip Address Name"
-  default     = "panorama"
+  default     = "panorama_pubIP"
 }
 variable "networkInterfaceName" {
   description = "Network Interface Name"
-  default     = "panorama"
+  default     = "panorama_mgmt"
 }
 variable "networkSecurityGroupName" {
   description = "Network Security Group Name"
-  default     = "panorama"
+  default     = "panorama_sg"
 }
 variable "diagnosticsStorageAccountName" {
   description = "Diagnostics Storage Account Name"
-  default     = "panorama"
+  default     = "panorama_dsa"
 }
 variable "diagnosticsStorageAccountTier" {
   description = "Diagnostics Storage Account Tier"
@@ -65,4 +65,13 @@ variable "adminUsername" {
 variable "adminPassword" {
   description = "Admin Password"
   default     = "Pal0Alt0@123"
+}
+variable "resourceTag" {
+  description = "Runtime tags for resources"
+  type        = map(string)
+  default = {
+    RunStatus   = "NOSTOP"
+    StoreStatus = "DND"
+    Username    = ""
+  }
 }

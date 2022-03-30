@@ -1,13 +1,24 @@
-//# ********** RESOURCE GROUP **********
-//# Configure the Providers
-provider "azurerm" {
-  version = "=1.37.0"
+# We strongly recommend using the required_providers block to set the
+# Azure Provider source and version being used
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=3.0.2"
+    }
+  }
 }
 
-provider "random" {}
+# Configure the Microsoft Azure Provider
+provider "azurerm" {
+  features {}
+}
 
-//# Create a resource group
+# Create Resource Group
 resource "azurerm_resource_group" "resourcegroup" {
-	name		= "${var.virtualMachineRG}"
-	location	= "${var.Location}"
+  name     = var.virtualMachineRG
+  location = var.Location
+
+  tags = var.resourceTag
+
 }
